@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>贪吃蛇大作战</title>
+    <style>
+         *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        #main {
+            width: 360px;
+            height: 420px;
+            border: 5px solid #000;
+            margin: 50px auto;
+            border-radius: 20px;
+            background-color:bisque;
+        }
+        #stage {
+            width: 304px;
+            height: 304px;
+            border: 2px solid #000;
+            margin: 20px auto;
+            position: relative;
+        }
+        #snake > div {
+            width: 10px;
+            height: 10px;
+            background-color: #000;
+            position: absolute;
+            border: 1px solid #bbb;
+        }
+        #food {
+            width: 10px;
+            height: 10px;
+            /* background-color: #000; */
+            position: absolute;
+            top: 100px;
+            left: 120px;
+            display: flex;
+            flex-flow:wrap;
+        }
+        #food > div {
+            width: 5px;
+            height: 5px;
+            background-color: #000;
+            transform: rotate(45deg);
+        }
+        #info {
+            width: 304px;
+            margin: 0px auto;
+            display:flex;
+            justify-content: space-between;
+            font: bold 20px courier;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div id="stage">
+            <div id="food">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div id="snake">
+                <div></div>
+            </div>
+        </div>
+        <div id="info">
+            <div id="score">SCORE:<span>0</span></div>
+            <div id="level">LEVEL:<span>1</span></div>
+        </div>
+    </div>
+    <script>
+        //1---->获取蛇，头和身体
+        const snake = document.getElementById("snake")
+        const snakes = snake.getElementsByTagName("div")
+
+        //获取食物坐标
+        const food = document.getElementById("food")
+       
+        //2---->让蛇动起来  获取键盘事件，只获取四个按键，获取蛇的坐标，更改蛇的坐标
+        let dir
+
+        keyActive = true
+        
+        document.addEventListener("keydown",(event)=>{  
+            dir = event.key
+     
+            //  move()
+        })
+
+        setTimeout(function move() {
+            const head = snakes[0]
+            let x = head.offsetTop
+            let y = head.offsetLeft
+      
+            switch(dir){
+                case "ArrowUp":
+                    // head.style.top = x - 10 +"px"
+                    x = x - 10 
+                    break
+                case "ArrowDown":
+                    // head.style.top = x + 10 +"px"
+                    x = x + 10 
+                    break
+                case "ArrowLeft":
+                    // head.style.left = y - 10 +"px"
+                    y = y - 10 
+                    break
+                case "ArrowRight":
+                    // head.style.left = y + 10 +"px"/
+                    y = y + 10 
+                    break
+            }
+         
+
+             //3---->吃到食物   获取食物坐标，蛇长度+1  食物变更位置
+
+            if( food.offsetTop  === head.offsetTop && head.offsetLeft === food.offsetLeft){
+                snake.insertAdjacentHTML("beforeend","<div/>")  //蛇的身体块+1
+                changeFood()
+            }
+            //将蛇的身体块接到头部，只需将身体块移到最新位置
+    
+            // const tail = snakes[snakes.length - 1]
+            // tail.style.top = x +"px"
+            // tail.style.left = y +"px"
+            // snake.insertAdjacentElement("afterbegin",tail)
+           
+
+            //移动蛇的位置 1.获取蛇尾巴 2.将尾巴移动到蛇头的位置
+            
+            const tail = snakes[snakes.length - 1]   
+            tail.style.left = y +"px"
+            tail.style.top = x +"px"
+            snake.insertAdjacentElement("afterbegin",tail)
+           
+            
+        setTimeout(move,300)
+
+
+        },300)
+
+
+       //修改食物坐标
+        function changeFood() {
+            const x = Math.floor(Math.random()*30) *10
+            const y = Math.floor(Math.random()*30) *10
+            food.style.top = x +"px"
+            food.style.left = y +"px"
+        }
+        // setTimeout(move,300) //只执行一次
+
+    </script>
+
+
+
+</body>
+</html>

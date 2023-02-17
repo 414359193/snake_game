@@ -72,19 +72,23 @@
             </div>
         </div>
         <div id="info">
-            <div id="score">SCORE:<span>0</span></div>
-            <div id="level">LEVEL:<span>1</span></div>
+            <div>SCORE:<span id="score">0</span></div>
+            <div >LEVEL:<span id="level">1</span></div>
         </div>
     </div>
     <script>
         //1---->获取蛇，头和身体
+        //2---->让蛇动起来  获取键盘事件，只获取四个按键，获取蛇的坐标，将蛇的新增身体块接到头部，只需将身体块移到最新位置
+        //3---->吃到食物   获取食物坐标，蛇长度+1  食物变更位置
+        
         const snake = document.getElementById("snake")
         const snakes = snake.getElementsByTagName("div")
 
-        //获取食物坐标
+        
         const food = document.getElementById("food")
-       
-        //2---->让蛇动起来  获取键盘事件，只获取四个按键，获取蛇的坐标，更改蛇的坐标
+        let score = 0
+        let level = 1
+     
         let dir
 
         keyActive = true
@@ -118,22 +122,37 @@
                     y = y + 10 
                     break
             }
-         
 
-             //3---->吃到食物   获取食物坐标，蛇长度+1  食物变更位置
 
             if( food.offsetTop  === head.offsetTop && head.offsetLeft === food.offsetLeft){
                 snake.insertAdjacentHTML("beforeend","<div/>")  //蛇的身体块+1
+                score++
                 changeFood()
+                document.getElementById("score").textContent = score
+               //增加等级
+                if(snakes.length %5 ===0 &&level <14){
+                    level++
+                    document.getElementById("level").textContent = level
+                }
             }
-            //将蛇的身体块接到头部，只需将身体块移到最新位置
-    
-            // const tail = snakes[snakes.length - 1]
-            // tail.style.top = x +"px"
-            // tail.style.left = y +"px"
-            // snake.insertAdjacentElement("afterbegin",tail)
-           
 
+            //防止出界
+            if(x < 0 || y < 0 ||x> 294 ||y> 294){
+                alert("撞墙了")
+                return
+                // clearTimeout()   为什么用return 而不是让定时器关闭？？？？
+            }
+            
+            //长度过长时，撞自己 ,且不能回头  遍历判断    为什么超过3时，反方向是撞到自己，长度2时，可以反向？？？？？
+            for(let i = 0;i<snakes.length -1 ;i++){
+                if(snakes[i].offsetTop===x&&snakes[i].offsetLeft===y){
+                    alert("撞自己啦！")
+                    return
+                }
+            }
+
+
+        
             //移动蛇的位置 1.获取蛇尾巴 2.将尾巴移动到蛇头的位置
             
             const tail = snakes[snakes.length - 1]   
@@ -141,14 +160,10 @@
             tail.style.top = x +"px"
             snake.insertAdjacentElement("afterbegin",tail)
            
-            
-        setTimeout(move,300)
-
-
+        setTimeout(move,300 - level*20)
         },300)
 
 
-       //修改食物坐标
         function changeFood() {
             const x = Math.floor(Math.random()*30) *10
             const y = Math.floor(Math.random()*30) *10

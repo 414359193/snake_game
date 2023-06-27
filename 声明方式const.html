@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //ES5语法：定义常量
+       /*  Object.defineProperty(window,'PI',{
+            value:3.14,
+            writable:false
+        })
+        console.log(PI);
+        PI = 5
+        console.log(PI); */
+        const  a = 5  //定义时必须赋值，具有块级作用域，具有暂时性死区
+
+        const obj = {
+            name:"zhangjh",
+            age:10,
+            skill:{
+                name:"code",
+                age:12
+            }
+
+        }
+        /* 
+        const声明的变量不能改动，指的是变量对于的内存地址不能改动
+        */
+       Object.freeze(obj) //浅层冻结，当对象具有嵌套属性时，下层属性skill可以被赋值改变，需要手动递归冻结
+       Object.freeze(obj.skill)
+
+       
+
+    </script>
+</body>
+</html>

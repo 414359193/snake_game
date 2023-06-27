@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         //let [a,b,c] = [1,2,3]  //等号两边结构对应一致
+        //  //对象的解构赋值
+        //  let user = {
+        //     name:"zhangjh",
+        //     age:12
+        //  }
+        // //  let name = user.name
+        // //  let {name,age} = user  //通过key（唯一）去对应的，与顺序无关
+        //  let {name:uname,age:uage} = user
+        //  console.log(uname,uage);
+        //  //字符串的解构赋值
+        //  let str = "abdcurgfg"
+        // //  let [a,b,c,d] = str
+        //  console.log(a,b,c,d);
+        //  function foo (){
+        //     console.log(123);
+        //  }
+        //  let [a = foo()] = [1]  //惰性赋值
+         //函数参数的解构赋值
+        //  function foo([a,b,c]){
+        //     console.log(a,b,c)
+        //  }
+        //  let arr = [1,2,3]
+
+         //对象参数解构
+
+         //提取Json数据   {} = JSON.parse()
+
+
+
+
+         //数组的遍历
+         //forEach()  不支持break、continue关键字 --》 中途无法跳出循环
+
+        //  let arr = [1,2,3,4.2,2,2,2,5]
+        //  arr.forEach(function(elem,index,array){
+        //     console.log(elem,index,array);
+        //  })
+
+        //  arr.map(function(value){
+        //     value+=1
+        //     return value
+        //  })
+
+        //  let res = arr.filter(function(value){
+        //     console.log(value)
+        //     return value ==2
+        //  })
+        //  console.log(res);
+
+        // let res2 =  arr.some(function(value){
+        //     console.log(value);
+        //     // return value==2
+        //  })
+    //     let res =  arr.every(function(value){
+    //         // console.log(value);
+    //         return value==2
+    //      })
+    //     console.log(res);
+
+    //    let resul = arr.reduce(function(prev,cur){
+    //     prev.indexOf(cur) == -1 && prev.push(cur)   
+    //         return prev
+    //     },[])
+    //     console.log(resul);
+
+        //find
+    //    let resa =  arr.find(function(value){
+    //         return value ==2
+    //     })
+    //     console.log(resa);
+
+        // for(let [item,index] of arr.entries()){
+        //     console.log(item,index);
+        // }
+        // divs = document.getElementsByTagName("div")  //获得一个伪数组divs
+        // //将伪数组转为一个数组---es5方法
+        // let arry = Array.prototype.slice.call(divs)
+        // console.log(arry);
+        // arry.push(123)
+        // console.log(arry);
+         
+        // let arrayLike = {
+        //     0:"es6",
+        //     1:"es7",
+        //     2:"es8",
+        //     length:3
+        // }
+        //es6，将对象转为数组
+        // let arr = Array.from(arrayLike)
+        // console.log('arr: ', arr);
+        // let arr = new Array(3)  //--->只有一个参数时，表示的是数组的长度,空数组
+        // let arr1 = Array.of(3,2,1,1,2,3,4,5) //参数只表示数组的初始值
+        // console.log('arr1: ', arr1);
+
+        // let arr2 = Array.of(11,"zhangjgh",18)
+        // console.log('arr2: ', arr2);
+
+        // // arr1.copyWithin(1,3)
+        // // console.log(' arr1.copyWithin(1,2): ',  arr1.copyWithin(1,2));
+        // console.log('arr1.copyWithin(1,3): ', arr1.copyWithin(1,3));
+        // console.log('arr1.copyWithin(1,4): ', arr1.copyWithin(1,4));
+        // let arre = new Array(3).fill(3)
+        // console.log('arre: ', arre);
+        // arre.fill("jh666",1,2)
+        // console.log('arre: ', arre);
+
+        // let arrs = [1,1,2,3,NaN]
+        // console.log(arrs.indexOf(NaN));
+        // arrs.includes(NaN)
+        // console.log('arrs.includes(NaN): ', arrs.includes(NaN));
+
+//函数的参数
+        // function foo(x,y){
+        //     y = y || "world"
+        //     console.log(x,y);
+        // }
+
+        // foo("hello",0)
+
+
+        //     function ajax(url,{
+        //         body = '',
+        //         method = "GET",
+        //         header={}
+        //     } = {}){
+        //         console.log(method);
+        //     }
+
+        // ajax('http://www.imooc.com',{
+        //     method:"POST"
+        // })
+//             let x =1
+//         function foo (x,y = x){
+//             console.log(y);
+//         }
+
+// foo(2)
+
+// let x = 1
+
+// function foo (y =x){
+//     let x = 2
+//     console.log(y);
+// }
+// foo()
+
+//扩展运算符
+   
+//箭头函数
+    // function sum(x,y){
+    //     return x+y
+    // }  //以函数声明的方式声明函数，会预定义，允许先调用后定义
+
+    // let sum = function(x,y){
+    //     return x+y
+    // }
+
+    // let sun = ()=>{
+    //     //左边是参数，右边是函数体
+    // }
+
+    // function People(name,age){
+    //     this.name = name
+    //     this.age = age
+    // }
+
+// let People = (name,age) => {
+//     this.name
+//     this.age
+// }//不可作为构造函数使用
+    // let p1 = new People("112",12)
+    // console.log(p1)
+
+//     let name = "sjfdk"
+//     let age = 12
+//     let s = "school"
+//     let obj = {
+//         name,
+//         age, //属性名和属性值（变量名）一样时，简洁写法
+//         [s]:"djkuwgf"
+//     }
+//     let y = {...obj}
+//     Object.assign(y,obj)
+// console.log(obj,y);
+
+// for(let key in obj){
+//     console.log(key,obj[key]);
+// }
+
+// Object.keys(obj).forEach(key =>{
+//     console.log(key,obj[key]);
+// })
+
+// Reflect.ownKeys(obj).forEach(key=>{
+//     console.log(key,obj[key]);
+// })
+
+
+//把对象复制给另一个对象
+
+// let target = {
+//     a:{
+//         b:{
+//             c:1
+//         }
+//     },
+//     e:2,
+//     f:3,
+//     g:7
+// }
+// let source = {
+//     a:{
+//         b:{
+//             c:1
+//         }
+//     },
+//     e:2,
+//     f:3,
+    
+// }
+
+// JSON.stringify(source)
+// console.log('JSON.stringify(source): ', JSON.stringify(source));
+// console.log('source: ', source);
+// JSON.parse()
+
+    // Object.assign(target,source)
+// console.log(target);
+
+
+//构造函数 
+// function People() {
+//     //实例属性
+//     this.name = name
+//     this.age = age
+//     People.count ++
+//     // this.showName = function(){
+//     //     console.log("我的名字是："+this.name)  //一般不把方法直接定义在构造函数中，会被每个实例化对象实例化方法
+        
+//     //}
+// }
+// //静态属性
+// People.count = 0
+// //一般定义在原型下
+// People.prototype.showName = function(){
+//     console.log("我的名字是")
+// }
+// console.log(People,count);
+//静态属性和静态方法
+//静态方法和具体实例化对象无关，
+
+// class People {  //class语法糖
+//     constructor(name,age){
+//         this.name = name
+//         this.age = age
+//         this._sex = -1
+//     }
+//     get sex(){
+//         if(this._sex===1){
+//             return "man"
+//         }else if(this._sex===0){
+//             return "femal"
+//         }
+//     }
+//     set sex(val){
+//         this._sex = val
+//     }
+//     showName(){
+//         console.log(this.name);   //在这边定义的直接会保存在原型中
+//     }
+//     static getCount(){
+//         return 5
+//     }  //static方法定义静态方法，不能定义静态属性
+// }
+// let p1 = new People("zhangjh")
+// // p1._sex="man"
+// p1.sex=1
+// console.log(p1.sex);
+// console.log(People.getCount());
+
+// //继承
+// class Coder extends People{
+//     constructor(name,age,company){
+//         super(name,age)
+//         this.company = company
+//     }
+// }
+// console.log(Coder.getCount());
+// People.school = 'dek' //通过这种方法定义静态属性
+// console.log(People.school);
+
+// console.log(Coder.school);//也可以被继承
+
+
+let s1 = Symbol('foo') //添加描述
+let s2 = Symbol('bar')
+// console.log(s1,s2);
+
+
+const obj = {
+    name:'zhangjh',
+    toString(){
+        return this.name
+    }
+}
+
+
+let s = Symbol(obj) //如果传入对象作为参数，会自动调用tostring方法
+console.log(s);
+console.log(s.description);
+</script>
+</body>
+</html>

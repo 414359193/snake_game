@@ -8,31 +8,34 @@
 </head>
 <body>
     <script>
-        for(var i = 0;i<3;i++){
-            setTimeout(function(){
-                console.log(i)
-            })
-        }    //输出3次3  
-        /* 
-        setTimeout()是异步函数，当for循环执行完毕时，才执行，执行三次
-        */
-        for(var i = 0;i <3;i++){
-            (function(j){
-                setTimeout(function(){
-                    console.log(j)
-                })
-            })(i)
-        }
-        /* 
-        闭包
-        */
-        for(let i = 0;i<3;i++){
-            setTimeout(function(){
-                console.log(i)
-            })
-        } 
-
-
+        // for(var i = 0;i<3;i++){
+        //     setTimeout(function(){
+        //         console.log(i)
+        //     })
+        // }    //输出3次3  
+        // /* 
+        // setTimeout()是异步函数，当for循环执行完毕时，才执行，执行三次
+        // */
+        // for(var i = 0;i <3;i++){
+        //     (function(j){
+        //         setTimeout(function(){
+        //             console.log(j)
+        //         })
+        //     })(i)
+        // }
+        // /* 
+        // 闭包
+        // */
+        // for(let i = 0;i<3;i++){
+        //     setTimeout(function(){
+        //         console.log(i)
+        //     })
+        // } 
+            arr = [1,2,3,4,5]
+            arr[2] = 0
+            console.log(arr.copyWithin(0,1,2))
+            const set = new Set()
+            console.log(set);
     </script>
 </body>
 </html>

@@ -9,7 +9,7 @@
 <body>
     <script>
          //let [a,b,c] = [1,2,3]  //等号两边结构对应一致
-        //  //对象的解构赋值
+  //对象的解构赋值
         //  let user = {
         //     name:"zhangjh",
         //     age:12
@@ -18,7 +18,7 @@
         // //  let {name,age} = user  //通过key（唯一）去对应的，与顺序无关
         //  let {name:uname,age:uage} = user
         //  console.log(uname,uage);
-        //  //字符串的解构赋值
+ //字符串的解构赋值
         //  let str = "abdcurgfg"
         // //  let [a,b,c,d] = str
         //  console.log(a,b,c,d);
@@ -26,7 +26,7 @@
         //     console.log(123);
         //  }
         //  let [a = foo()] = [1]  //惰性赋值
-         //函数参数的解构赋值
+ //函数参数的解构赋值
         //  function foo([a,b,c]){
         //     console.log(a,b,c)
         //  }
@@ -303,22 +303,691 @@
 // console.log(Coder.school);//也可以被继承
 
 
-let s1 = Symbol('foo') //添加描述
-let s2 = Symbol('bar')
-// console.log(s1,s2);
+// let s1 = Symbol('foo') //添加描述
+// let s2 = Symbol('bar')
+// // console.log(s1,s2);
 
 
-const obj = {
-    name:'zhangjh',
-    toString(){
-        return this.name
-    }
-}
+// const obj = {
+//     name:'zhangjh',
+//     toString(){
+//         return this.name
+//     }
+// }
 
 
-let s = Symbol(obj) //如果传入对象作为参数，会自动调用tostring方法
-console.log(s);
-console.log(s.description);
+// let s = Symbol(obj) //如果传入对象作为参数，会自动调用tostring方法
+// console.log(s);
+// console.log(s.description);
+// let arr1 = [1,2,3,4,89]
+// let arr2 = [1,2,3,4,5,6]
+// //取两个的交集
+// let s1 = new Set(arr1)
+// let s2 = new Set(arr2)
+// let res = new Set(arr1.filter(item => s2.has(item)))
+// console.log(Array.from(res)); //Array.from转为数组
+
+// //差集
+// let res1 = new Set(arr1.filter(item => !s2.has(item)))
+// console.log(res1);
+// [...res1]
+// console.log('[...res1]: ', [...res1]);
+
+// let ws = new WeakSet()
+// const obj1 = {
+//     name:"dksjhf"
+// }
+// ws.add(obj1)
+// ws.add({
+//     age:12
+// })
+
+// //垃圾回收机制GC
+// //weakset  弱引用 被它应用的内容没被外部引用，它会被垃圾回收
+
+// ws.delete(obj1)
+// console.log(ws);
+
+// let m = new Map()
+// let obj = {
+//     name:"jdk"
+// }
+// m.set(obj,'es') //设置
+// console.log(m);  //键值对形式，key可以是不同类型
+// console.log(m.get(obj)); //获取
+// console.log(m.has(obj));//判断是否含有某个元素
+
+// let map = new Map([
+//     ['name','jid'],
+//     ['age',12]
+// ])
+// console.log(map); //会被自动转为键值对形式
+// console.log(map.size);
+// console.log(map.has('name'));
+// console.log(map.get('age'));
+// map.set('name','zhangjh')
+// // console.log(map);
+// //遍历它
+// // map.forEach((value,key) => console.log(value,key))
+
+// for(let [key,v] of map){
+//     console.log("as",key,v)
+// }
+//unicode 字符表示法
+//es6 \u xxxx -码点 0000-ffff  取值范围超过时，加{}包裹
+
+//模板字符串 使用反引号`` 的字符串  1.对多行字符串，会保留字符串的换行和回车
+
+//嵌套模板
+// console.log(String.fromCharCode(0x20bb7));
+// console.log(String.fromCodePoint(0x20bb7));
+// let str = 'icjdjf'
+// console.log(str.includes('dm'));// const newstr = str.repeat(12)
+// console.log(newstr);
+//十进制 -》 二进制
+// const a = 5
+// console.log(a.toString(2)); //转为二进制
+// //二进制 -》十进制
+// const b = 101
+// console.log(parseInt(b,2));  //es5语法
+
+// //ES6 0B 二进制 0O八进制
+// const c = 0B101
+// console.log(c);
+// const d = 0O222
+// console.log(d);
+
+// let obj = {}
+// let p = new Proxy(obj,{})
+// p.name = 'icdmk'
+// console.log(obj.name);
+//增加拦截钩子
+// let arr = [1,34,56]
+// arr = new Proxy(arr,{
+//     get(target,prop) {
+//         console.log(target,prop);
+//         return prop in target ? target[prop] : "error"
+//     }
+// })
+// console.log(arr[1]);
+
+// let dic = {
+//     'hello':'你好',
+//     'world':'世界'
+// }
+// dic = new Proxy(dic,{
+//     get(target,prop) {
+//         return prop in target ? target[prop] :prop
+//     }
+// })
+// console.log(dic['world']);
+//set
+// let arr = []
+// arr = new Proxy(arr,{
+//     set(target,prop,val){
+//         if(typeof val === 'number'){
+//             target[prop] = val
+//             return true
+//         } else {
+//             return false
+//         }
+//     }
+// })
+// arr.push(5)
+// console.log(arr[0],arr[1]);
+
+// let obj = {
+//     name :'sk',
+// [Symbol('es')]:'esd'
+// }
+// console.log(Object.getOwnPropertyNames(obj));
+// console.log(Object.getOwnPropertySymbols(obj));
+// console.log(Object.keys(obj));
+// for(let key in obj){
+//     console.log(key);
+// }
+// let user = {
+//     name:'zhangjh',
+//     age:12,
+//     _paswd:'sdwd'
+// }
+
+// user = new Proxy(user,{
+//     get(target,prop){
+//         if(prop,startWith('_')){
+//             throw new Error('不可访问')
+//         }else{
+//             return target[prop]
+//         }
+//     },
+//     set(target,prop,val) {
+//         if(prop.startsWith('_')) {
+//             throw new Error('不可访问')
+//         }else {
+//             target[prop]=val
+//             return true
+//         }
+//     },
+//     deleteProperty(target,prop) {
+//         if(prop.startsWith('_')) {
+//             throw new Error("不可删除")
+//         } else {
+//             delete target[prop]
+//             return true
+//         }
+//     },
+//     ownKeys(target){
+//        return Object.keys(target).filter(key => !key.startsWith('_'))
+//     }
+// })
+
+// try{
+//     delete user._paswd
+// }catch(e){
+//     console.log(e.message);
+// }
+
+// for(let key in user){
+//     console.log(key);
+// }
+
+// //apply
+// let sum = (...args)=>{
+//     let num = 0
+//     args.forEach(item => {
+//         num += item
+//     })
+//     return num
+// }
+
+// sum = new Proxy(sum,{
+//     apply(target,ctx,args) {
+//         return target(...args) *2
+//     }
+// })
+
+// console.log(sum(1,2));
+// console.log(sum.call(null,1,2,3));
+// console.log(sum.apply(null,[1,2,3]));
+
+// let User = class {
+//     constructor(name){
+//         this.name = name
+//     }
+// }
+
+// User = new Proxy(User,{
+//     construct(target,args,newTarget) {
+//         return new target(...args)
+//     }
+// })
+// console.log(new User('imocc'));
+
+// const a = 2
+// const b = 3
+// console.log(a+b);//同步
+// setTimeout(()=>{//异步
+//     console.log(a+b);
+// },1000)
+//前后端数据分离  前端 《-》 后端 ajax
+
+
+//1.创建XMLHttpRequest对象
+// var url = 'http://172.18.130.222:4201/sockjs-node/info?t=1676876008764'
+
+
+// function ajax(url,successCallback,failCallback) {
+//     var xmlhttp
+//     if(window.XMLHttpRequest){
+//     xmlhttp = new XMLHttpRequest()
+//     }else {
+//     xmlhttp = new ActiveXObject('Microsoft.XMLHTTP')
+//     }
+// //2.发送请求
+// xmlhttp.open('GET',url,true)
+// xmlhttp.send()
+
+// //3.服务端响应
+// xmlhttp.onreadystatechange = function(){
+//     if(xmlhttp.readyState ===4 && xmlhttp.status === 200){
+//         var obj = JSON.parse(xmlhttp.responseText)
+//         // console.log(obj);
+//         successCallback && successCallback(obj) //表示这个参数传递了，就调用这个参数
+//     } else if(xmlhttp.readyState ===4 &&xmlhttp.status === 404){
+//         failCallback && failCallback(xmlhttp.statusText)
+//     }
+//     }
+// }
+// ajax('a.json',res=>{
+//     console.log(res);
+//     ajax('b.json',res=>{
+//         console.log(res);
+//     })
+// })
+// //状态管理
+// let p = new Promise((resolve,reject) =>{
+//     setTimeout(() => {
+//         console.log('dnjf');
+//         // resolve()
+//         reject('defit')
+//     }, 1000);
+// }).then((res)=>{  //then的第二个参数表示失败！！！
+//     console.log(res);
+// },(err)=>{
+//     console.log(err);
+// })
+
+
+// let p1 = new Promise((resolve,reject) => {
+//     console.log(1);//promise里面没有写异步操作，先输出1  ---立即执行---宏任务
+// })
+// console.log(2);
+// p.then(res => {
+//     console.log(3);
+// })
+
+// let p1 = new Promise((resolve,reject)=>{
+//     resolve(1)
+// })
+
+// let p2 = new Promise((resolve,reject)=>{
+//     setTimeout(() => {
+//         resolve(2)
+//     }, 1000);
+// })
+
+// let p3 = new Promise((resolve,reject) =>{
+//     setTimeout(() => {
+//         reject(3)
+//     }, 1000);
+// })
+// console.log(p1);//fulfilled
+// console.log(p2);//pending -> fulfilled  状态从正在执行到已完成
+// console.log(p3);//pending
+
+// setTimeout(() => {
+//     console.log(p2); //fulfilled
+// }, 2000);
+// setTimeout(() => {
+//     console.log(p3); //rejected
+// }, 2000);
+
+
+// p1.then((res)=>{
+//     console.log(res);
+// })
+// p2.then(res => {
+//     console.log(res);
+// })
+// p3.catch(err =>{  //then的第二个参数  或catch  均可以表示执行失败
+//     console.log(err);
+// })
+
+// let p = new Promise((resolve,reject) =>{
+//     resolve(1)
+//     reject(2)
+// })
+// p.then(res => {
+//     console.log(res);
+// },err =>{
+//     console.log(err);   //1 先成功  状态一旦确定下来，就不会被改变
+// })
+
+//promise 改写回调深渊
+
+// new Promise((resolve,reject) =>{
+//     ajax('a.json',res => {
+//         console.log(res);
+//         resolve()
+//     })
+// }).then(res=>{
+//         console.log('chengg');
+//         return new Promise((resolve,reject) => {
+//             ajax('b.json',res=>{
+//                 console.log(res);
+//                 resolve()
+//             })
+//         })
+//     }).then(res => {
+//         console.log('b成功');
+//     })
+
+// function getPromise(url){
+//     return new Promise((resolve,reject)=>{
+//         ajax(url,res =>{
+//             resolve(res)
+//         },err =>{
+//             console.log('err: ', err);
+//             reject(err)
+//         })
+//     })
+// }
+
+// getPromise('a1.json').then(res =>{
+//     console.log(res);
+//     return getPromise('b.json')
+// },err => {
+//     console.log(err);
+//     return getPromise('b.json')
+// }).then(res =>{
+//     console.log(res);
+//     return getPromise('c.json')
+// }).then(res => {
+//     console.log(res);
+// })
+
+
+// let p1 = Promise.resolve('success')
+
+// p1.then(res => {
+//     console.log(res);
+// })
+
+// let p2 = Promise.reject('fail')
+// console.log(p2)
+// p2.catch(err => {
+//     console.log(err);
+// })
+
+// function foo(flag){
+//     if(flag){
+//         return new Promise(resolve => {
+//             resolve('success')
+//         })
+//     } else{
+//         return Promise.resolve('fail')
+//     }
+// }
+
+// foo(false).then(res =>{
+//     console.log(res);
+// })
+
+// function getImg(){
+//     return new Promise(()=>{
+//         let img = new Image()
+//         img.onload = function() {
+//             resolve()
+//         }
+//         img.src = 'fjerihf'
+//     })
+// }
+
+// function timeout() {
+//     return new Promise((resolve,reject)=>{
+//         setTimeout(() => {
+//             reject('请求超时')
+//         },2000)
+//     })
+// }
+
+// Promise.race([getImg(),timeout()]).then(res =>{
+//     console.log(res);
+// }).catch(err =>{
+//     console.log(err);
+// })//看着两个谁先执行完成
+
+
+// function* foo() {
+//     for(let i = 0;i<3;i++){
+//         yield i
+//     }
+// }
+// // console.log(foo()); 
+// //generation 需要手动控制执行  生成器函数
+// let f = foo()
+// console.log(f.next());
+// console.log(f.next());
+// console.log(f.next());
+
+
+// function* gen(x){
+//     let y = 2*(yield(x+1))
+//     let z = yield(y/3)
+//     return x+y+z
+// }
+// let g = gen(5)
+// console.log(g.next()); //next传的参数，表示上一次结果的返回值 5+1
+// console.log(g.next(9)); y = 24
+// console.log(g.next(10)); x=5 
+
+
+//完成a，b，c顺序请求
+// function ajax(url,callback) {
+
+// }
+
+
+// function request(url){
+//     ajax(url,res =>{
+//         getData.next(res)
+//     })
+// }
+
+// function* gen() {
+//     let res1 = yield request('a.json')
+//     console.log(res1);
+//     let res2 = yield request('b.json')
+//     console.log(res2);
+//     let res3 = yield request('c.json')
+//     console.log(res3);
+// }
+
+// let getData = gen()
+// getData.next()
+
+
+
+// function makeIterator(arr){
+//     let nextIndex = 0
+//     return{
+//         next(){
+//             return nextIndex < arr.length ? {
+//                 value:arr[nextIndex++],
+//                 done:false
+//             } : {
+//                 value:undefined,
+//                 done:true
+//             }
+//         }
+//     }
+// }
+// let it = makeIterator(['a','b','c','d'])
+// console.log(it.next());
+// console.log(it.next());
+// console.log(it.next());
+// console.log(it.next());
+// console.log(it.next());
+
+// let course= {
+//     allCourse:{
+//         fromdsd:['sed','derfd','def'],
+//         ejdhfr:['de','dfre','fre']
+//     }
+// }
+
+// course[Symbol.iterator] = function() {
+//     let allCourse = this.allCourse
+//     let keys = Reflect.ownKeys(allCourse)
+//     let values = []
+//     return {
+//         next(){
+//             if(!values.length){
+//                 if(keys.length){
+//                     values = allCourse[keys[0]]
+//                     keys.shift()
+//                 }
+//             }
+//             return{
+//                 done: !values.length,
+//                 value:values.shift()
+//             }
+//         }
+//     }
+// }
+// for(let c of course){
+//     console.log(c);
+// }
+//generation写法
+// course[Symbol.iterator] = function* () {
+//     let allCourse = this.allCourse
+
+// }
+
+// const arr = ['es2','es3','es6']
+// //console.log(arr.includes('es2'));//判断数组里是否包含某个值，返回布尔值
+// //console.log(arr.includes('es7',3));//第二个参数，查找的下标，可以为负数，从后往前找
+// console.log(arr.indexOf("es3"));//返回找到的下标
+// console.log(arr.indexOf("es6") > -1);
+
+// function timeout(){
+//     return new Promise((resolve,reject) =>{
+//         setTimeout(()=>{
+//         //    resolve(1)
+//         reject('fail')
+//         },1000)
+//     })
+// }
+
+
+// async function foo(){
+//     // let result = 'zhangjh'
+//     // // console.log(result);
+
+// //    const res =  await timeout()
+// return await timeout()
+// //     console.log(res);
+// //     console.log(2);
+// }
+
+// foo().then(res=>{
+//     console.log(res);
+// }).catch(err => {
+//     console.log(err);
+// })
+
+// const obj = {
+//     name:"djkef",
+//     web:"dcjkhjfrjhf",
+//     course:"dfldfkg"
+// }
+// console.log(Object.values(obj));
+// console.log(Object.entries(obj));
+// for(let [k,v] of Object.entries(obj)){
+//     console.log(`${k}:${v}`);
+// }
+// console.log(Object.entries(['a','b','c']));
+
+
+// const desc = Object.getOwnPropertyDescriptors(obj)
+// console.log(desc);
+
+//如何给对象设置属性
+// const obj = {}
+// Reflect.defineProperty(obj,'name',{
+//     value:"zhangjh",
+//     writable:true, //能否修改值
+//     configurable:false, //能否被删除
+//     enumerable:true //能否通过for in 循环遍历
+// })
+// console.log(obj);
+// obj.name = 'jh'
+// console.log(obj);
+
+// delete obj.name
+// console.log(obj);
+
+// const str = 'zhangjh'
+// console.log(str.padStart(10,'s'));//在起始位置填充，参数：填充后的目标长度，以什么字符串填充，返回一个新字符串
+// console.log();
+// const now = new Date()
+// const year = now.getFullYear()
+// const month = (now.getMonth() +1).toString().padStart(2,'0')
+// const day = (now.getDate()).toString().padStart(2,'0')
+// console.log(`${year}-${month}-${day}`);
+// //应用场景，不完全显示手机号
+//                                                                                                                                                                一个呱呱呱呱呱呱 const tel = '13685088107'
+// const newTel = tel.slice(-4).padStart(tel.length,'*')
+// console.log(newTel);
+
+
+// const arr = ['sd','dew','fsd']
+// arr[Symbol.iterator] = function(){
+//     let nextIndex = 0
+//     return {
+//         next() {
+//             return nextIndex <arr.length ?{
+//                 value:arr[nextIndex++],
+//                 done:false
+//             } : {
+//                 value:undefined,
+//                 done:true
+//             }
+//         }
+//     }
+// }
+// for(let item of arr ){
+//     console.log(item);
+// }//同步迭代
+
+
+// function getPromise(time){
+//     return new Promise((resolve,reject)=>{
+//         setTimeout(() => {
+//             resolve({
+//                 value:time,
+//                 done:false
+//             })
+//         }, time);
+//     })
+// }
+
+// const arr = [getPromise(1000),getPromise(2000),getPromise(3000)]
+
+// arr[Symbol.asyncIterator] = function(){
+//     let nextIndex = 0
+//     return {
+//         next() {
+//             return nextIndex < arr.length ? arr[nextIndex++]:
+//             Promise.resolve({
+//                 value:undefined,
+//                 done:true
+//             })
+//         }
+//     }
+// }
+
+// //异步迭代，迭代一个异步操作
+// async function test(){
+//     for await (let item of arr){
+//         console.log(item);
+//     }
+// }
+// test()
+
+//先行断言
+// const str = 'ecmascript'
+// console.log(str.match(/ecma(?=script)/));
+
+// //后行断言
+// console.log(str.match(/(?<=ecma)script/));
+// console.log(str.match(/(?<!ecma)script/));
+
+// const user = {
+//     address:{
+//         street:'sssjidao',
+//         getNum(){
+//             return '90'
+//         }
+//     }
+// }
+
+// const street = user?.address?.street   //?是否存在？方法、属性。。。等
+
+// const b= 2
+// const  a = b || 5
+
+
 </script>
 </body>
 </html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            display: grid;
+            text-align: center;
+            grid-template-columns: 1fr max-content 1fr;
+            grid-template-rows: 150px 100px;
+            /* grid-template-areas: "a a a"
+                                  "b b . " 
+                                  "none none c"; */
+            column-gap: 10px;
+            justify-items: stretch;
+            justify-content: center;
+            align-items: center;
+            align-content: stretch;
+        }
+        .box{
+            background-color: pink;
+            border: 1px solid black;
+        }
+        /* .a{
+            grid-area: a;
+            background: aquamarine;
+        }
+        .b{
+            grid-area: b;
+            background-color: purple;
+        }
+        .c{
+            grid-area: c;
+            background-color: blue;
+        } */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box a">1</div>
+        <div class="box b">2</div>
+        <div class="box c">3</div>
+        <div class="box d">4</div>
+        <div class="box a">1</div>
+        <div class="box b">2</div>
+        <div class="box c">3</div>
+        <div class="box d">4</div>
+        <div class="box a">1</div>
+        <div class="box b">2</div>
+        <div class="box c">3</div>
+        <div class="box d">4</div>
+    </div>
+</body>
+</html>

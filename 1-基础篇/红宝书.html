@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //标签函数
+        // let a = 6;
+        // let b = 5;
+        // function simpleTag(strings,abval,bval,sunex){
+        //     console.log(strings);
+        //     console.log(abval);
+        //     console.log(bval);
+        //     console.log(sunex);
+        //     return 'foobar'
+        // }
+        // let untag = `${a} +${b} = ${a+b}`;
+        // let tagres = simpleTag`${a} +${b} = ${a+b}`;
+        // console.log(untag);
+        // console.log(tagres);
+
+    //break与continue
+        // let num = 0;
+        // outmost:for(let i=0;i<10;i++){
+        //     for(let j=0;j<10;j++){
+        //         console.log(i,"-----------",j);
+        //         if(i==5&&j==5){
+        //             // break outmost;
+        //             // break
+        //             continue outmost;
+        //         }
+        //         num++;
+        //     }
+            
+        // }
+        // console.log(num);
+    //函数传递参数----按值引用
+        // function setName(obj){
+        //     obj.name = "zjh"
+        // }
+        // let myname = new Object();
+        // setName(myname);
+        // console.log(myname);
+
+        // var rotate = function(nums,k){
+        //     var len = nums.length;
+        //     var newArr = nums.splice(0,len-k)
+        //     nums.push(...newArr)
+        //     console.log("new",nums);
+
+        //     // var temp = nums.concat(newArr)
+        //     // nums = nums.concat(newArr)
+        //     // console.log("nums",nums);
+        //     // nums = temp
+        // }
+        // var a = [1,2,3,4,5,6,7]
+        // rotate(a,3)
+        // console.log("外面的",a);
+    
+    //正则
+    // let text = "this has been a short summer";
+    // let pattern = /(.)hort/g;
+    // if(pattern.test(text)){
+    //     console.log("最后搜索的文本",RegExp.input);
+    //     console.log("最后匹配得文本前面的文本",RegExp.leftContext);
+    //     console.log("最后匹配的文本后面的文本",RegExp.rightContext);
+    //     console.log("最后匹配的文本",RegExp.lastMatch); 
+    //     console.log("最后匹配的捕获组",RegExp.lastParen);
+    //     console.log(RegExp.$3);
+    // }
+    
+    //String
+//         let s1 = "hello";
+//         let res =  s1.concat(",zjh","cxn")
+//         console.log(res);
+
+//         let meg = "abc"
+//         console.log(meg);
+//         let stg =meg[Symbol.iterator]();
+//         console.log(stg.next());
+
+
+// let global = function(){
+//     return this;
+// }();
+
+
+//array
+    // const a1 = [1,2,3,4,5]
+    // const a2 = Array.from(a1)
+    // a1[0]  = "black"
+    // console.log("a1",a1);
+    // console.log(a2);
+
+
+//     const a = ['foo','bar',"car","cxn"];
+//     const akeys = Array.from(a.keys());
+//     console.log("akeys",akeys);
+//     const avalues = Array.from(a.values())
+//     console.log("avalues",avalues);
+//     const aentries = Array.from(a.entries())
+//     console.log("aentries",aentries);
+
+// for(const [idx,ele] of a.entries()){
+//     console.log(idx,ele);
+// }
+
+//copyWithin()
+//     let ints,reset=()=>ints = [0,1,2,3,4,5,6,7,8,9]
+
+//     reset();
+//     console.log("ints",ints);
+//     console.log("reset",reset);
+//     ints.copyWithin(4)//复制0开始的内容，插入5开始的位置
+// console.log(ints);
+// reset();
+// console.log(reset);
+
+
+
+// let color = ['red',"blue","green"]
+// console.log(color.toString());
+// console.log(color.valueOf());
+// alert(color.valueOf())
+// alert(color)
+
+
+// function compare(v1,v2){
+//     if(v1<v2){
+//         return -1;
+//     }else if(v1>v2){
+//         return 1;
+//     }else{
+//         return 0;
+//     }
+// }
+// let values = [0,1,2,3,4,0,5]
+// values.sort(compare)
+// console.log(values);
+
+
+
+let  colors = ["red","blue","green"];
+// let newColor=["black","brown"];
+// let more = {
+//     [Symbol.isConcatSpreadable] :true,
+//     length:2,
+//     0:"pink",
+//     1:"cyan"
+// };
+// newColor[Symbol.isConcatSpreadable] = false
+// //强制不打平
+// let color1 = colors.concat("yell9o",newColor)
+// console.log("color1",color1);
+
+// //强制打平
+// let color0 = colors.concat(more)
+// console.log("color0",color0);
+
+// let removed = colors.splice(1,1,"yelloe","cute")
+// console.log(removed);
+// console.log(colors);
+
+// const people =[{
+//     name:"qbc",
+//     age:12
+// },
+// {
+//     name:"sjdiiei",
+//     age:18
+// }]
+// rez = people.find((ele,inx,arr)=> ele.age<16)
+// console.log(rez);
+
+//Map
+//使用嵌套数组初始化
+// const m = new Map([
+//     ["key1","val1"],
+//     ["key2","val2"],
+//     ["key3","val3"]
+// ])
+// console.log(m.size);
+//使用自定义迭代器初始化
+// const m2 = new Map({
+//     [Symbol.iterator]:function*(){
+//         yield ["key1","val1"];
+//         yield ["key2","val2"];
+//         yield ["key3","val3"];
+//     }
+// })
+
+
+// const m= new Map();
+// const functionKey = function(){};
+// const symbolKey = Symbol();
+// const objectKey = new Object();
+
+// m.set(functionKey,"functionValue");
+// m.set(symbolKey,"symbolValue");
+// m.set(objectKey,"objectValue");
+
+// console.log(m.get(functionKey));
+// console.log(m.get(function(){}));//---这是什么意思啊
+
+// const m1 = new Map();
+// const a = 0/"",
+//       b = 0/"",
+//       pz =+0,
+//       nz = -0;
+
+//      // alert(a===b)//false
+//       //alert(pz===nz)//true
+//     m1.set(b,"foo");
+//     m1.set(pz,"bar");
+//     console.log(m1.get(b));
+// for(let pair of m1.entries()){
+//     console.log(pair);
+// }
+
+// for(let pair of m1[Symbol.iterator]()){
+//     console.log(pair);
+// }
+
+
+//weakmap
+// const obj  = {
+//     name:"zjh",
+//     age:18
+// }
+// function nameFn(){
+//     console.log("被执行");
+// }
+
+// const weakmap = new WeakMap();
+// const map = new Map();
+// map.set("name",nameFn);
+// weakmap.set(obj,map);
+// obj.name = "cxn";
+// const map2  = weakmap.get(obj)
+// console.log(map2);
+// console.log(weakmap);
+// const fn = map2.get("name")
+// console.log(fn);
+// fn()
+
+//迭代
+// let str = 'abdhgfcwk'
+// iter = str[Symbol.iterator]()
+// console.log(iter.next());
+// console.log(str[Symbol.iterator]());
+
+//自定义迭代器
+// class Counter{
+//     constructor(limit){
+//         this.count = 1;
+//         this.limit  = limit;
+//     }
+//     next(){
+//         if(this.count <= this.limit){
+//             return {done:false,value:this.count++}
+//         }else{
+//             return {done:true,value:undefined}
+//         }
+//     }
+//     [Symbol.iterator](){
+//         return this;
+//     }
+// }
+// let counter = new Counter(3);
+// for(let i of counter){
+//     console.log(i);
+// }
+// for(let i of counter){
+//     console.log("i",i);
+// }
+
+
+//通过改变计数器的创建方式=>每创建一个迭代器就创建一个新的计数器=>把计数器放到闭包中，通过闭包返回迭代器
+// class Counter1{
+//     constructor(limit){
+//         this.limit = limit;
+//     }
+//     [Symbol.iterator](){
+//         let count = 1,
+//             limit = this.limit;
+//         return {
+//             next(){
+//                 if(count<=limit){
+//                     return {done:false,value:count++};
+//                 }else{
+//                     return {done:true,value:undefined}
+//                 }
+//             }
+//         }
+//     }
+// }
+
+// let counter1 = new Counter1(3);
+// for(let i of counter1){
+//     console.log(i);
+// }
+
+// for(let i of counter1){
+//     console.log(i);
+// }
+
+
+//生成器
+function* generation(){
+    console.log("foo");
+    return 'foo'//返回值是value的值
+}
+const g = generation()
+// console.log(g);
+console.log(g.next());
+console.log(generation()[Symbol.iterator]());
+console.log(g===g[Symbol.iterator]());//默认的迭代器是自引用的
+
+
+console.log("----生成器作为可迭代对象");
+
+// function* gen(){
+//     yield 1;
+//     yield 2;
+//     yield 3; 
+// }
+// for(const x of gen()){
+//     console.log(x);
+// }
+
+
+function one(){
+        setTimeout(()=>{
+            console.log(111);
+            iterator.next();
+        },1000)
+    }
+    function two(){
+        setTimeout(()=>{
+            console.log(222);
+            iterator.next();
+        },2000)
+    }
+    function three(){
+        setTimeout(()=>{
+            console.log(333);
+            iterator.next();
+        },3000)
+    }
+    function * gen(){
+        yield one();
+        yield two();
+        yield three();
+    }
+    // let iterator = gen();
+    // iterator.next();//这个调用一次next(),为什么会一直回调？
+
+
+    function* nTimes(n){
+        while(n--){
+            yield;
+        }
+    }
+        for(let _ of nTimes(3)){
+            console.log('foo');
+        }
+
+console.log("---------实现输入和输出-----");
+//实现输入和输出
+    function* gene(init){
+        console.log(init);
+        console.log(yield);
+        console.log(yield);
+    }
+let gen1 = gene("foo")
+gen1.next('bar')//第一次调用传入的值不会被使用，是为了开始执行生成器函数
+gen1.next('baz')
+gen1.next('dgha')
+
+
+console.log("-----------------------");
+function* foo(name1){
+    console.log("01",name1);
+    console.log("02",name1);
+    const name2 = yield "aaa"
+    console.log("03",name2);
+    console.log("04",name2);
+    const name3 = yield "bbbb"
+    console.log("05",name3);
+    console.log("06",name3); 
+}
+// const gena = foo("name1")
+// console.log(gena.next("name1"));
+// console.log(gena.next("name5"));
+// console.log(gena.next("name6"));
+
+
+//实现范围和填充数组
+
+function* range(start,end){
+    while(end>start){
+        yield start++;
+    }
+}
+for(const x of range(4,7)){
+    console.log(x);
+}
+
+function* zero(n){
+    while(n--){
+        yield 0;
+    }
+}
+
+console.log(Array.from(zero(8)));
+
+function* ganFn(){
+    yield* [1,2,3]
+}
+let gen11 = ganFn();
+for(const x of gen11){
+    console.log(x);
+}
+
+
+console.log("实现递归算法");
+function* ntimeFn(n){
+    if(n>0){
+        yield* ntimeFn(n-1);
+        yield n-1;
+    }
+}
+for(const x of ntimeFn(4)){
+    console.log(x);
+}
+    </script>
+</body>
+</html>

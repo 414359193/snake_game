@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //对象的扩展
+      
+        // const obj1 = {
+        //     name:'zjh',
+        //     age:12
+        // }
+        // const obj2 = {
+        //     school:'ndsu',
+        //     age:23
+        // }
+        // //克隆对象
+        // const obj3 = {
+        //     ...obj1//是生成一个新对象
+        // }
+        // console.log(obj3);
+        // obj1.age=18
+        // console.log(obj3);
+
+        // //合并对象
+        // const obj4 = {
+        //     ...obj1,...obj2//有相同属性时，会被覆盖前面的值
+        // }       
+        // console.log(obj4);
+
+    //Promise扩展
+        // new Promise((resolve,reject)=>{
+        //     setTimeout(()=>{
+        //         resolve("333")
+        //         reject('5565')
+        //     },1000)
+        // }).then(res=>{
+        //     console.log(res);
+        // }).catch(err=>{
+        //     console.log(err);
+        // }).finally(()=>{
+        //     console.log('finally');
+        // })
+
+    //字符串扩展
+            // const foo = (a,b,c,d) =>{
+            //     console.log(a);
+            //     console.log(b);
+            //     console.log(c);
+            //     console.log(d);
+            // }
+            // const name = 'zjh'
+            // const age = 12
+            // foo`这人是${name},今年${age}岁`
+
+    //对象扩展
+        // const obj = {
+        //     name:'zjh',
+        //     course:'es4'
+        // }
+        // const entrise = Object.entries(obj)//将对象转为数组
+        // console.log(entrise);
+
+        // const fromEntries = Object.fromEntries(entrise)//将数组转为对象
+        // console.log(fromEntries);
+
+        // const map = new Map()
+        // map.set('name','zjh')
+        // map.set('course','es')
+        // console.log(map);
+
+        // const mp = Object.fromEntries(map)
+        // console.log(mp);
+
+    //字符串扩展
+            // const str  = '    zjh   '
+            // //正则
+            // console.log(str.replace(/^\s+/g,''));
+            // console.log(str.replace(/\s+$/g,''));
+
+    //数组扩展
+            // const arr = [1,2,3,4,5,6]
+            // // const res = arr.map(x => [x+1]).flat()
+            // const res = arr.flatMap(x =>[x+1])
+            // console.log(res);
+    
+    //JSON扩展
+            
+    //Symbol扩展
+            // const s = Symbol('immoc')
+            // console.log(s);
+            // console.log(s.description);
+
+setTimeout(() => {
+ console.log(1);   
+});
+queueMicrotask(()=>{
+    setTimeout(()=>{
+        console.log(2);
+    })
+})
+new Promise((resolve) =>{
+    resolve('3');
+}).then((res)=>{
+    console.log(res);
+})
+console.log(4);
+
+    </script>
+</body>
+</html>
